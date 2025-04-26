@@ -1,0 +1,12 @@
+# Secrets
+.env*
+!.env.example
+
+# Docker
+mysql-data/
+*.tar
+
+# IDE
+.vscode/
+.idea/
+EOF

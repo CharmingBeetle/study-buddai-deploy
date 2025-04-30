@@ -1,5 +1,8 @@
 # Deployment Central 🛠️
 
+## Demo
+[![Canva Video](https://img.shields.io/badge/▶-Watch%20Demo-blue)](https://www.canva.com/design/DAGk-OYPdDw/WaVbKaRpJ0vBj3ri2hu7AA/watch?utm_content=DAGk-OYPdDw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf649f59812)
+
 ## 📂 Folder Structure
 ```
 study_buddAI/

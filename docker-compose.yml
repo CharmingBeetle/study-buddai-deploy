@@ -2,7 +2,7 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./Study_BuddAI_FE 
+      context: ../Study_BuddAI_FE 
       dockerfile: Dockerfile
     ports:
       - "5173:80"
@@ -11,10 +11,11 @@ services:
 
   backend:
     build:
-      context: ./Study_BuddAI_BE  
+      context: ../Study_BuddAI_BE  
       dockerfile: Dockerfile.prod  
     ports:
       - "8080:8080"
+    env_file: .env.docker
     environment:
       - MYSQL_HOST=db
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}

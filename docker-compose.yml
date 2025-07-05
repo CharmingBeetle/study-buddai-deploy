@@ -7,7 +7,8 @@ services:
     ports:
       - "5173:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy  # Wait for backend to be ready
 
   backend:
     build:
@@ -15,21 +16,37 @@ services:
       dockerfile: Dockerfile.prod  
     ports:
       - "8080:8080"
-    env_file: .env.docker
+    env_file: .env.docker  # Make sure this file exists with all variables!
     environment:
       - MYSQL_HOST=db
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_PORT=3306
+      - GOOGLE_APPLICATION_CREDENTIALS=/Study_BuddAI_BE/google-key.json
+
+    volumes:
+      - ./Study_BuddAI_BE/google-key.json:/app/google-key.json:ro
+
     depends_on:
-      - db
+      db:
+        condition: service_healthy  # Critical addition
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s  # Extra startup time
 
   db:
     image: mysql:8.0
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    env_file: .env.docker  # Share the same env file
     volumes:
       - mysql-data:/var/lib/mysql
-    # ports:  # Only uncomment if need external DB access
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    # Uncomment if you need to connect to DB externally:
+    # ports:
     #   - "3306:3306"
 
 volumes:

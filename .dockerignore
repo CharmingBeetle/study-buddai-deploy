@@ -1,3 +1,6 @@
 .env*
 .git/
 node_modules/
+
+#Google Cloud credentials
+google-key.json

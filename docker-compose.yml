@@ -23,7 +23,7 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/Study_BuddAI_BE/google-key.json
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}  # Ensure this is set in .env.docker
     volumes:
-      - ./Study_BuddAI_BE/google-key.json:/app/google-key.json:ro
+      - ./Study_BuddAI_BE/google-key.json:/Study_BuddAI_BE/google-key.json:ro
 
     depends_on:
       db:

@@ -8,7 +8,7 @@ services:
       - "5173:80"
     depends_on:
       backend:
-        condition: service_healthy  # Wait for backend to be ready
+        condition: service_healthy
 
   backend:
     build:
@@ -16,7 +16,8 @@ services:
       dockerfile: Dockerfile.prod  
     ports:
       - "8080:8080"
-    env_file: ./.env.docker  
+    env_file: 
+    - ./.env.docker  
     environment:
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
@@ -27,13 +28,13 @@ services:
 
     depends_on:
       db:
-        condition: service_healthy  # Critical addition
+        condition: service_healthy  
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/"]
       interval: 10s
       timeout: 5s
       retries: 3
-      start_period: 30s  # Extra startup time
+      start_period: 30s 
 
   db:
     image: mysql:8.0
@@ -45,7 +46,7 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
-    # Uncomment if you need to connect to DB externally:
+    # Uncomment if need to connect to DB externally:
     # ports:
     #   - "3306:3306"
 

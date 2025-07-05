@@ -21,7 +21,7 @@ services:
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
       - GOOGLE_APPLICATION_CREDENTIALS=/Study_BuddAI_BE/google-key.json
-
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}  # Ensure this is set in .env.docker
     volumes:
       - ./Study_BuddAI_BE/google-key.json:/app/google-key.json:ro
 

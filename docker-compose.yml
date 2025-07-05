@@ -16,12 +16,12 @@ services:
       dockerfile: Dockerfile.prod  
     ports:
       - "8080:8080"
-    env_file: .env.docker  # Make sure this file exists with all variables!
+    env_file: ./.env.docker  
     environment:
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
       # - GOOGLE_APPLICATION_CREDENTIALS=/Study_BuddAI_BE/google-key.json
-      - GOOGLE_API_KEY=${GOOGLE_API_KEY}  # Ensure this is set in .env.docker
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY} 
     # volumes:
     #   - ./Study_BuddAI_BE/google-key.json:/Study_BuddAI_BE/google-key.json:ro
 

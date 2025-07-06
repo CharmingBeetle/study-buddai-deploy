@@ -1,6 +1,6 @@
 # Secrets
 .env*
-!.env.example
+!.env.production
 
 # Docker
 mysql-data/

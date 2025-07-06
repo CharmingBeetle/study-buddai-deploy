@@ -18,10 +18,15 @@ services:
       - "8080:8080"
     env_file: 
     - ./.env.docker
+    - ../Study_BuddAI_BE/.env.production  # Include both env files
+    # Uncomment if you want to use environment variables directly in the container
     # environment:
-    #   - MYSQL_HOST=db
-    #   - MYSQL_PORT=3306
-    #   # - GOOGLE_APPLICATION_CREDENTIALS=/Study_BuddAI_BE/google-key.json
+    #   - NODE_ENV=production
+    #   - MYSQL_HOST=${MYSQL_HOST}
+    #   - MYSQL_USER=${MYSQL_USER}
+    #   - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    #   - MYSQL_DATABASE=${MYSQL_DATABASE}
+    #   - MYSQL_PORT=${MYSQL_PORT}
     #   - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     # volumes:
     #   - ./Study_BuddAI_BE/google-key.json:/Study_BuddAI_BE/google-key.json:ro

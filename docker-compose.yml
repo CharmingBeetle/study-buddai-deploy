@@ -6,12 +6,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:80"
-    env_file:
-       - ../Study_BuddAI_FE/.env.docker
+    
     depends_on:
       backend:
         condition: service_healthy
-
+   
   backend:
     build:
       context: ../Study_BuddAI_BE  

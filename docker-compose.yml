@@ -18,7 +18,7 @@ services:
       - "8080:8080"
     env_file: 
     - ./.env.docker
-    - ../Study_BuddAI_BE/.env.production  # Include both env files
+    # - ./.env.production  # Include both env files
     # Uncomment if you want to use environment variables directly in the container
     # environment:
     #   - NODE_ENV=production
@@ -30,7 +30,7 @@ services:
     #   - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     # volumes:
     #   - ./Study_BuddAI_BE/google-key.json:/Study_BuddAI_BE/google-key.json:ro
-
+    
     depends_on:
       db:
         condition: service_healthy  
@@ -52,8 +52,8 @@ services:
       timeout: 10s
       retries: 5
     # Uncomment if need to connect to DB externally:
-    # ports:
-    #   - "3306:3306"
+  #   ports:  
+  #     - "3306:3306"
 
 volumes:
   mysql-data:
